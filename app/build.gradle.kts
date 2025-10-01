@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.kotlin.serialization) // Version catalog ile doğru şekilde eklendi
+
 }
 
 android {
@@ -14,6 +16,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
+
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -57,14 +60,19 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
+
     implementation("com.mapbox.maps:android-ndk27:11.15.0")
     implementation("com.mapbox.extension:maps-compose-ndk27:11.15.0")
 
     implementation("androidx.navigation:navigation-compose:2.9.0")
 
-    val nav_version = "2.9.5"
 
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3") // JSON serialization kütüphanesi eklendi
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:1.0.0") // Kotlinx Serialization Converter
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0") // (Opsiyonel) İstek ve yanıtları loglamak için
+
+
 
 
 
